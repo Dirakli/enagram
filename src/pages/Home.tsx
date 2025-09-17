@@ -1,9 +1,10 @@
 import Heading from "../components/Heading";
-
+import Comparison from "../components/Comparison";
 function Home() {
   return (
-    <div className="flex px-5 md:px-[33px]  items-center w-full bg-[#132450]">
+    <div className="flex flex-col items-center w-full ">
       <Heading />
+      <Comparison />
     </div>
   );
 }
