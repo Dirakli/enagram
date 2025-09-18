@@ -1,6 +1,6 @@
 import BurgerMenu from "./BurgerMenu";
 
-function Enagram() {
+const Enagram = () => {
   return (
     <div className="flex  py-[12px] px-5 md:px-[30px] lg:px-6 bg-[#132450] w-full justify-between">
       <div className="flex items-center lg:h-[44px] cursor-pointer gap-x-[9px] md:gap-x-[11px]">
@@ -15,6 +15,6 @@ function Enagram() {
       <BurgerMenu />
     </div>
   );
-}
+};
 
 export default Enagram;

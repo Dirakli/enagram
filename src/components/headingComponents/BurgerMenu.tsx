@@ -1,4 +1,4 @@
-function BurgerMenu() {
+const BurgerMenu = () => {
   return (
     <img
       className="lg:hidden cursor-pointer"
@@ -6,6 +6,6 @@ function BurgerMenu() {
       alt="burger bar"
     />
   );
-}
+};
 
 export default BurgerMenu;

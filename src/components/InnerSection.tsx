@@ -4,46 +4,65 @@ import AddButton from "./innerComponents/AddButton";
 import Inputs from "./innerComponents/Inputs";
 import LanguageFormat from "./innerComponents/LanguageFormat";
 import Loading from "./innerComponents/Loading";
+import { compareTexts, type ComparisonResult } from "../utils/textComparison";
 
 const InnerSection: React.FC = () => {
-  const [text1, setText1] = useState<string>("");
-  const [text2, setText2] = useState<string>("");
+  const [firstText, setFirstText] = useState<string>("");
+  const [secondText, setSecondText] = useState<string>("");
   const [showLoader, setShowLoader] = useState<boolean>(false);
-  const [addActive, setAddActive] = useState<boolean>(false); // controls AddButton
+  const [comparisonResult, setComparisonResult] =
+    useState<ComparisonResult | null>(null);
+  const [showComparison, setShowComparison] = useState<boolean>(false);
 
-  const isActive = text1.trim() !== "" && text2.trim() !== "";
+  const isActive = firstText.trim() !== "" && secondText.trim() !== "";
 
   const handleComparisonClick = () => {
     if (!isActive) return;
 
     setShowLoader(true);
-    setText1("");
-    setText2("");
 
-    setAddActive(true);
+    setTimeout(() => {
+      const result = compareTexts(firstText, secondText);
+      setComparisonResult(result);
+      setShowLoader(false);
+      setShowComparison(true);
+    }, 1000);
+  };
+
+  const handleNewComparison = () => {
+    setFirstText("");
+    setSecondText("");
+    setComparisonResult(null);
+    setShowComparison(false);
   };
 
   return (
     <div className="flex relative mt-6 flex-col px-4 w-full">
       <div className="flex md:justify-between flex-col md:flex-row w-full ">
         <LanguageFormat />
-        <AddButton isActive={addActive} />
+        <AddButton isActive={showComparison} onClick={handleNewComparison} />
       </div>
 
       <div className="w-full h-[1px] bg-[#EDEDED] mt-4"></div>
 
       {!showLoader && (
         <Inputs
-          value1={text1}
-          value2={text2}
-          onChange1={(e) => setText1(e.target.value)}
-          onChange2={(e) => setText2(e.target.value)}
+          firstTextareaText={firstText}
+          secondTextareaText={secondText}
+          handleFirstTextChange={(e) => setFirstText(e.target.value)}
+          handleSecondTextChange={(e) => setSecondText(e.target.value)}
+          firstSegment={comparisonResult?.segmentsFirst}
+          secondSegment={comparisonResult?.segmentsSecond}
+          showComparison={showComparison}
         />
       )}
 
       {showLoader && <Loading />}
 
-      <Comparison isActive={isActive} onClick={handleComparisonClick} />
+      <Comparison
+        isActive={isActive && !showComparison}
+        onClick={handleComparisonClick}
+      />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-function TextCompare() {
+const TextCompare = () => {
   return (
     <div className="flex lg:hidden items-center cursor-pointer lg:border-none border-b-1 border-b-[#EDEDED] w-full py-[18px] px-5 md:px-[33px]">
       <img
@@ -6,12 +6,12 @@ function TextCompare() {
         src="/lan.svg"
         alt="language logo"
       />
-      <p className="font-bold text-[#132450] md:text-base text-xs leading-[20px] tracking-[0] pl-[4px]">
+      <p className="compare font-bold text-[#132450] md:text-base text-xs leading-[20px] tracking-[0] pl-[4px]">
         ტექსტის შედარება
       </p>
       <img className="pl-[4px]" src="/more.svg" alt="more logo" />
     </div>
   );
-}
+};
 
 export default TextCompare;

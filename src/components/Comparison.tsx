@@ -15,7 +15,7 @@ const Comparison: React.FC<ComparisonProps> = ({ isActive, onClick }) => {
         }`}
         disabled={!isActive}
       >
-        <p className="text-sm leading-7 text-center align-middle text-[#FFFFFF]">
+        <p className="text-sm compare-button leading-7 text-center align-middle text-[#FFFFFF]">
           შედარება
         </p>
       </button>
