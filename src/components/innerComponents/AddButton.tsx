@@ -7,7 +7,7 @@ interface AddButtonProps {
 const AddButton: React.FC<AddButtonProps> = ({ isActive }) => {
   return (
     <button
-      className={`w-full mt-4 cursor-pointer rounded-md flex justify-center items-center h-[48px] gap-1 ${
+      className={`w-full md:w-[150px] md:mt-0 mt-4 cursor-pointer rounded-md flex justify-center items-center h-[48px] gap-1 ${
         isActive ? "bg-[#4571E4]" : "bg-[#383A4899]"
       }`}
     >

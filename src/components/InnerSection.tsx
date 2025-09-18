@@ -9,18 +9,27 @@ const InnerSection: React.FC = () => {
   const [text1, setText1] = useState<string>("");
   const [text2, setText2] = useState<string>("");
   const [showLoader, setShowLoader] = useState<boolean>(false);
+  const [addActive, setAddActive] = useState<boolean>(false); // controls AddButton
 
   const isActive = text1.trim() !== "" && text2.trim() !== "";
 
   const handleComparisonClick = () => {
     if (!isActive) return;
+
     setShowLoader(true);
+    setText1("");
+    setText2("");
+
+    // turn AddButton blue when comparison clicked
+    setAddActive(true);
   };
 
   return (
     <div className="flex relative mt-6 flex-col px-4 w-full">
-      <LanguageFormat />
-      <AddButton isActive={isActive} />
+      <div className="flex md:justify-between flex-col md:flex-row w-full ">
+        <LanguageFormat />
+        <AddButton isActive={addActive} />
+      </div>
       <div className="w-full h-[1px] bg-[#EDEDED] mt-4"></div>
 
       {!showLoader && (

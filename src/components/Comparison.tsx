@@ -7,7 +7,7 @@ interface ComparisonProps {
 
 const Comparison: React.FC<ComparisonProps> = ({ isActive, onClick }) => {
   return (
-    <div className="w-full flex mt-8 justify-center">
+    <div className="w-full md:mb-[58px] flex mt-8 justify-center">
       <button
         onClick={onClick}
         className={`w-[142px] cursor-pointer rounded-md flex justify-center items-center h-[48px] ${
