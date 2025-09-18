@@ -20,7 +20,6 @@ const InnerSection: React.FC = () => {
     setText1("");
     setText2("");
 
-    // turn AddButton blue when comparison clicked
     setAddActive(true);
   };
 
@@ -30,6 +29,7 @@ const InnerSection: React.FC = () => {
         <LanguageFormat />
         <AddButton isActive={addActive} />
       </div>
+
       <div className="w-full h-[1px] bg-[#EDEDED] mt-4"></div>
 
       {!showLoader && (
